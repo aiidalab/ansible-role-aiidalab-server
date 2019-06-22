@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - name: Update apt cache.
+      become: true
+      apt: update_cache=yes cache_valid_time=3600
+      when: ansible_os_family == 'Debian'
+
+  vars:
+    - run_tests: true
+
+  roles:
+    - role: "marvel-nccr.aiidalab_server"

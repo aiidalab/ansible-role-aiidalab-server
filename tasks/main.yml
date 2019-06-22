@@ -1,0 +1,8 @@
+---
+# - include_tasks: setup-ubuntu-16.04.yml
+#   when: ansible_distribution == 'Ubuntu' \
+#         and ansible_distribution_version == '16.04'
+#
+# - include_tasks: setup-ubuntu-18.04.yml
+#   when: ansible_distribution == 'Ubuntu' \
+#         and ansible_distribution_version == '18.04'

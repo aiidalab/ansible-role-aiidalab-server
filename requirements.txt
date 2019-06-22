@@ -1,0 +1,7 @@
+# for running
+ansible>=2.7
+# for testing
+molecule
+docker
+pre-commit
+yamllint

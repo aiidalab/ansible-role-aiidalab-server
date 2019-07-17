@@ -8,7 +8,7 @@
         pull: true
       register: docker_pull
     - name: tag docker image
-      shell: docker tag aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }} aiidalab-docker-stack:latest
+      command: docker tag aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }} aiidalab-docker-stack:latest
       when: docker_pull.changed
   when: not aiidalab_server_build_locally
 

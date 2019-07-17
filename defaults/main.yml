@@ -1,1 +1,21 @@
 ---
+aiidalab_server_config: jupyterhub_config.py
+aiidalab_server_mem_limit: 4G   # memory limit per user
+aiidalab_server_cpu_limit: 2.0  # cpu limit per user
+# replace with static key
+aiidalab_server_crypt_key: "{{ lookup('password', '/tmp/crypt_key chars=ascii_letters') }}"
+# Whether to create new users on first login, if they do not exist
+aiidalab_server_create_users: "True"  # can be "True" or "False"
+
+# set to true in order to build aiidalab docker image locally
+aiidalab_server_build_locally: false
+# tag of docker stack, see https://hub.docker.com/r/aiidalab/aiidalab-docker-stack
+aiidalab_server_docker_stack: latest  # or 'develop'
+
+# replace with domain, e.g. aiidalab.materialscloud.org
+aiidalab_server_name: "aiidalab"
+
+# for oauth server
+aiidalab_server_oauth_server: auth.materialscloud.org
+# replace with static key
+aiidalab_server_oauth_client_secret: "{{ lookup('password', '/tmp/client_secret chars=ascii_letters') }}"

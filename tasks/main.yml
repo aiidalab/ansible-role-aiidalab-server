@@ -8,15 +8,15 @@
 #         and ansible_distribution_version == '18.04'
 
 - import_tasks: prerequisites.yml
-  tags: aiidalab_prerequisites
+  tags: aiidalab_server_prerequisites
   become: true
 
 - import_tasks: jupyterhub.yml
-  tags: aiidalab_jupyterhub
+  tags: aiidalab_server_jupyterhub
   become: true
 
 - import_tasks: docker-stack.yml
-  tags: aiidalab_docker_stack
+  tags: aiidalab_server_docker_stack
 
 # - import_tasks: app-metadata.yml
 #   tags: apps_metadata

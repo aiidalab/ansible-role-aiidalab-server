@@ -9,7 +9,7 @@
     - python3-setuptools
     - python3-wheel
     - npm
-    - nodejs-legacy
+    - nodejs
     - apache2
     - ntp
     - iotop

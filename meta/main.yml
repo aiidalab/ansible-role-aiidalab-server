@@ -5,7 +5,7 @@ galaxy_info:
   role_name: aiidalab_server
   author: "MARVEL NCCR"
   # yamllint disable-line rule:line-length
-  description: "An Ansible role that deploys an [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu."
+  description: "An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu."
   license: MIT
   min_ansible_version: 2.7
   platforms:
@@ -17,3 +17,9 @@ galaxy_info:
     - ubuntu
     - application
     - science
+
+dependencies:
+  - src: geerlingguy.docker
+    version: 2.5.2
+  - src: geerlingguy.certbot
+    version: 3.0.2

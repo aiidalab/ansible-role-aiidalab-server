@@ -2,7 +2,7 @@
 
 # Ansible Role: marvel-nccr.aiidalab_server
 
-An Ansible role that deploys an [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu.
+An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu.
 
 ## Installation
 

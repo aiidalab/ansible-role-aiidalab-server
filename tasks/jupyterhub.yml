@@ -1,0 +1,55 @@
+---
+## ----------------------------------------------------------------------------
+- name: enable apache mods
+  apache2_module: name={{ item }}
+  with_items:
+    - proxy
+    - proxy_http
+    - proxy_wstunnel
+
+- name: copy JupyterHub apache config
+  template:
+    src: "aiidalab_apache.conf"
+    dest: "/etc/apache2/sites-available/{{ domain }}.conf"
+
+- name: enable JupyterHub apache site
+  command: a2ensite {{ domain }}
+  args:
+    creates: /etc/apache2/sites-enabled/{{ domain }}.conf
+
+- name: Restart apache2
+  service:
+    name: "apache2"
+    state: "reloaded"
+
+- name: copy aiidalab logo
+  copy: src="aiidalab_wide.png" dest="/etc/jupyterhub/"
+
+- name: copy JupyterHub config
+  template:
+    src: "{{ jh_config_template }}"
+    dest: /etc/jupyterhub/jupyterhub_config.py
+
+- name: copy JupyterHub service template
+  copy: src="jupyter.service" dest="/etc/systemd/system/jupyterhub.service"
+
+- name: create JupyterHub user (adduser)
+  # uid has to match the one of "scientist" from the Dockerfile
+  user: name="jupyterhub" uid=1234 groups="docker" append="yes"
+
+- name: create JupyterHub volumes directory
+  file: path="/var/jupyterhub/volumes" state="directory" mode=0755 owner="jupyterhub" group="jupyterhub"
+
+# - name: Create and attach a volume with users home directories
+#   import_role:
+#     name: os_create_volume
+#   vars:
+#     vol_name: "{{ home_drive_name }}"
+#     vol_size: "{{ home_drive_size }}"
+#     mount_point: /var/jupyterhub/volumes
+
+- name: (re)start JupyterHub service
+  service:
+    name: "jupyterhub"
+    enabled: true
+    state: "restarted"

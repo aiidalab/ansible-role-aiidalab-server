@@ -1,0 +1,17 @@
+---
+- name: clone aiidalab-docker-stack repo
+  git:
+    repo: https://github.com/aiidalab/aiidalab-docker-stack.git
+    dest: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
+    accept_hostkey: true
+    force: true
+    version: "{{ aiidalab_docker_stack_version }}"
+    recursive: false
+  register: git_get
+
+- name: Build docker image (takes several minutes the first time)
+  tags: build_image
+  docker_image:
+    path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
+    name: aiidalab-docker-stack
+    force: true

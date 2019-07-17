@@ -6,3 +6,18 @@
 # - include_tasks: setup-ubuntu-18.04.yml
 #   when: ansible_distribution == 'Ubuntu' \
 #         and ansible_distribution_version == '18.04'
+
+- import_tasks: prerequisites.yml
+  tags: aiidalab_prerequisites
+  become: true
+
+- import_tasks: jupyterhub.yml
+  tags: aiidalab_jupyterhub
+  become: true
+
+- import_tasks: docker-stack.yml
+  tags: aiidalab_docker_stack
+
+# - import_tasks: app-metadata.yml
+#   tags: apps_metadata
+#   become: true

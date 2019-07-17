@@ -1,0 +1,47 @@
+---
+- name: Install JupyterHub apt dependencies
+  apt: name={{ item }}
+  with_items:
+    - python-pip
+    - python-setuptools
+    - python-wheel
+    - python3-pip
+    - python3-setuptools
+    - python3-wheel
+    - npm
+    - nodejs-legacy
+    - apache2
+    - ntp
+    - iotop
+    - sysstat
+    - htop
+
+- name: Install JupyterHub npm dependencies
+  npm:
+    name: configurable-http-proxy
+    # Note: version 4.0.1 did not work with node 4.2.6 on Ubuntu 16.04
+    version: 3.1.1
+    global: true
+
+- name: Install JupyterHub pip3 dependencies
+  pip:
+    name: "{{ item.name }}"
+    executable: pip3
+    version: "{{ item.version }}"
+  with_items:
+    - name: jupyterhub
+      version: 0.9.4
+    - name: jupyter-client
+      version: 5.2.3
+    - name: dockerspawner
+      version: 0.9.1
+    - name: oauthenticator
+      version: 0.8.0
+    - name: cryptography
+      version: 2.4.2
+
+- name: install recent docker python library
+  pip:
+    name: docker
+    version: 3.5.1
+    state: present

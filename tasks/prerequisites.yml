@@ -1,20 +1,20 @@
 ---
 - name: Install JupyterHub apt dependencies
-  apt: name={{ item }}
-  with_items:
-    - python-pip
-    - python-setuptools
-    - python-wheel
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
-    - npm
-    - nodejs-legacy
-    - apache2
-    - ntp
-    - iotop
-    - sysstat
-    - htop
+  apt:
+    name:
+      - python-pip
+      - python-setuptools
+      - python-wheel
+      - python3-pip
+      - python3-setuptools
+      - python3-wheel
+      - npm
+      - nodejs
+      - apache2
+      - ntp
+      - iotop
+      - sysstat
+      - htop
 
 - name: Install JupyterHub npm dependencies
   npm:
@@ -31,6 +31,8 @@
   with_items:
     - name: jupyterhub
       version: 0.9.4
+    - name: jupyterhub-firstuseauthenticator
+      version: 0.12
     - name: jupyter-client
       version: 5.2.3
     - name: dockerspawner

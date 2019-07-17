@@ -1,21 +1,26 @@
 ---
-## ----------------------------------------------------------------------------
 - name: enable apache mods
   apache2_module: name={{ item }}
   with_items:
     - proxy
     - proxy_http
     - proxy_wstunnel
+    - rewrite
 
 - name: copy JupyterHub apache config
   template:
-    src: "aiidalab_apache.conf"
-    dest: "/etc/apache2/sites-available/{{ domain }}.conf"
+    src: "apache.conf"
+    dest: "/etc/apache2/sites-available/aiidalab-server.conf"
 
 - name: enable JupyterHub apache site
-  command: a2ensite {{ domain }}
+  command: a2ensite aiidalab-server
   args:
-    creates: /etc/apache2/sites-enabled/{{ domain }}.conf
+    creates: /etc/apache2/sites-enabled/aiidalab-server.conf
+
+- name: disable default site
+  command: a2dissite 000-default
+  args:
+    removes: /etc/apache2/sites-enabled/000-default.conf
 
 - name: Restart apache2
   service:
@@ -27,7 +32,7 @@
 
 - name: copy JupyterHub config
   template:
-    src: "{{ jh_config_template }}"
+    src: "{{ aiidalab_server_config }}"
     dest: /etc/jupyterhub/jupyterhub_config.py
 
 - name: copy JupyterHub service template
@@ -49,7 +54,9 @@
 #     mount_point: /var/jupyterhub/volumes
 
 - name: (re)start JupyterHub service
-  service:
+  systemd:
     name: "jupyterhub"
     enabled: true
+    daemon_reload: true
     state: "restarted"
+  when: cloud_platform is undefined or cloud_platform != 'docker'

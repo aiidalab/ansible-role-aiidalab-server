@@ -21,5 +21,5 @@ galaxy_info:
 dependencies:
   - role: geerlingguy.docker
     version: 2.5.2
-  - role: geerlingguy.certbot
-    version: 3.0.2
+#  - role: geerlingguy.certbot
+#    version: 3.0.2

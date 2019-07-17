@@ -54,7 +54,8 @@
 #     mount_point: /var/jupyterhub/volumes
 
 - name: (re)start JupyterHub service
-  service:
+  systemd:
     name: "jupyterhub"
     enabled: true
+    daemon_reload: true
     state: "restarted"

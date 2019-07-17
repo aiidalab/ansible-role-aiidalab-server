@@ -19,7 +19,7 @@ galaxy_info:
     - science
 
 dependencies:
-  - src: geerlingguy.docker
+  - role: geerlingguy.docker
     version: 2.5.2
-  - src: geerlingguy.certbot
+  - role: geerlingguy.certbot
     version: 3.0.2

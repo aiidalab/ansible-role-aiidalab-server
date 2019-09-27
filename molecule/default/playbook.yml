@@ -10,6 +10,7 @@
   vars:
     - run_tests: true
     - cloud_platform: docker
+    - aiidalab_server_docker_stack: 1.0b4-k8s
 
   roles:
     - role: "marvel-nccr.aiidalab_server"

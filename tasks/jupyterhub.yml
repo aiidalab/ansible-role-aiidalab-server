@@ -11,6 +11,7 @@
   template:
     src: "apache.conf"
     dest: "/etc/apache2/sites-available/aiidalab-server.conf"
+  register: apache_config
 
 - name: enable JupyterHub apache site
   command: a2ensite aiidalab-server
@@ -26,6 +27,7 @@
   service:
     name: "apache2"
     state: "reloaded"
+  when: apache_config.changed
 
 - name: copy aiidalab logo
   copy: src="aiidalab_wide.png" dest="/etc/jupyterhub/"

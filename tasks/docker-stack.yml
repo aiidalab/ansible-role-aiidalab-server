@@ -1,5 +1,6 @@
 ---
 - name: pull docker image from dockerhub
+  become: true
   block:
     - name: pull docker image
       docker_image:
@@ -25,6 +26,7 @@
         recursive: false
       register: git_get
     - name: Build docker image (takes several minutes the first time)
+      become: true
       docker_image:
         path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
         name: aiidalab-docker-stack

@@ -17,6 +17,9 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    options:
+      x:
+        - 503
   playbooks:
     converge: playbook.yml
   requirements_file: requirements.yml

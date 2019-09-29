@@ -21,7 +21,8 @@ auth_server = "{{ aiidalab_server_oauth_server }}"
 #===============================================================================
 # user Docker Spawner
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
-c.DockerSpawner.image = "aiidalab-docker-stack:{{ aiidalab_server_docker_stack }}"
+# JupyterHub always runs image tagged as "aiidalab-docker-stack:latest" on local docker instance
+c.DockerSpawner.image = "aiidalab-docker-stack:latest"
 c.DockerSpawner.extra_host_config.update({
     # take care of lost child processes
     # see also: https://github.com/krallin/tini/issues/8

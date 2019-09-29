@@ -1,16 +1,16 @@
 ---
+# jupyterhub always runs image tagged as "aiidalab-docker-stack:latest"
 - name: pull docker image from dockerhub
   become: true
   block:
     - name: pull docker image
       docker_image:
         name: aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }}
-        tag: latest
         pull: true
       register: docker_pull
     - name: tag docker image
       command: docker tag aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }} aiidalab-docker-stack:latest
-      when: docker_pull.changed
+      changed_when: false
   when: not aiidalab_server_build_locally
 
 - name: Build docker image locally
@@ -29,6 +29,6 @@
       become: true
       docker_image:
         path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
-        name: aiidalab-docker-stack
+        name: aiidalab-docker-stack:latest
         force: true
   when: aiidalab_server_build_locally

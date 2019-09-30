@@ -19,3 +19,7 @@ aiidalab_server_name: "aiidalab"
 aiidalab_server_oauth_server: auth.materialscloud.org
 # replace with static key
 aiidalab_server_oauth_client_secret: "{{ lookup('password', '/tmp/client_secret chars=ascii_letters') }}"
+
+# user id of the jupyterhub user
+# Note: has to match the uid of "scientist" from the Dockerfile
+aiidalab_server_uid: 1234

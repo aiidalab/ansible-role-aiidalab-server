@@ -41,8 +41,11 @@
   copy: src="jupyter.service" dest="/etc/systemd/system/jupyterhub.service"
 
 - name: create JupyterHub user (adduser)
-  # uid has to match the one of "scientist" from the Dockerfile
-  user: name="jupyterhub" uid=1234 groups="docker" append="yes"
+  user:
+    name: "jupyterhub"
+    uid: "{{ aiidalab_server_uid }}"
+    groups: "docker"
+    append: true
 
 - name: create JupyterHub volumes directory
   file: path="/var/jupyterhub/volumes" state="directory" mode=0755 owner="jupyterhub" group="jupyterhub"

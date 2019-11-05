@@ -30,17 +30,19 @@
     version: "{{ item.version }}"
   with_items:
     - name: jupyterhub
-      version: 0.9.4
+      version: 1.0.0
     - name: jupyterhub-firstuseauthenticator
       version: 0.12
     - name: jupyter-client
-      version: 5.2.3
+      version: 5.3.3
     - name: dockerspawner
-      version: 0.9.1
+      version: 0.11.1
     - name: oauthenticator
-      version: 0.8.0
+      version: 0.9.0
     - name: cryptography
-      version: 2.4.2
+      version: 2.7.0
+    - name: dulwich
+      version: 0.19.13
 
 - name: install recent docker python library
   pip:

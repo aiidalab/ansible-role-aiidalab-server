@@ -9,7 +9,7 @@
 
 - name: copy JupyterHub apache config
   template:
-    src: "apache.conf"
+    src: "{{ aiidalab_apache_config }}"
     dest: "/etc/apache2/sites-available/aiidalab-server.conf"
   register: apache_config
 
@@ -37,7 +37,7 @@
     src: "{{ aiidalab_server_config }}"
     dest: /etc/jupyterhub/jupyterhub_config.py
 
-- name: copy JupyterHub service template
+- name: copy JupyterHub service
   copy: src="jupyter.service" dest="/etc/systemd/system/jupyterhub.service"
 
 - name: create JupyterHub user (adduser)
@@ -50,13 +50,15 @@
 - name: create JupyterHub volumes directory
   file: path="/var/jupyterhub/volumes" state="directory" mode=0755 owner="jupyterhub" group="jupyterhub"
 
-# - name: Create and attach a volume with users home directories
-#   import_role:
-#     name: os_create_volume
-#   vars:
-#     vol_name: "{{ home_drive_name }}"
-#     vol_size: "{{ home_drive_size }}"
-#     mount_point: /var/jupyterhub/volumes
+- name: Create and attach a volume with users home directories
+  include_role:
+    name: os_create_volume
+  vars:
+    vol_name: "{{ aiidalab_server_users_home_drive }}"
+    vol_size: "{{ aiidalab_server_users_home_drive_size }}"
+    mount_point: /var/jupyterhub/volumes
+  when: aiidalab_server_users_home_drive is defined
+
 
 - name: (re)start JupyterHub service
   systemd:

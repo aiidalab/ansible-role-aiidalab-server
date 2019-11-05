@@ -1,4 +1,5 @@
 ---
+aiidalab_apache_config: apache.conf
 aiidalab_server_config: jupyterhub_config.py
 aiidalab_server_mem_limit: 4G   # memory limit per user
 aiidalab_server_cpu_limit: 2.0  # cpu limit per user
@@ -22,4 +23,6 @@ aiidalab_server_oauth_client_secret: "{{ lookup('password', '/tmp/client_secret 
 
 # user id of the jupyterhub user
 # Note: has to match the uid of "scientist" from the Dockerfile
+aiidalab_server_user: "scientist"
 aiidalab_server_uid: 1234
+aiidalab_server_gid: 1234

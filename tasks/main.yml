@@ -18,6 +18,7 @@
 - import_tasks: docker-stack.yml
   tags: aiidalab_server_docker_stack
 
-# - import_tasks: app-metadata.yml
-#   tags: apps_metadata
-#   become: true
+- import_tasks: app-metadata.yml
+  tags: apps_metadata
+  become: true
+  when: aiidalab_server_metadata_daemon

@@ -22,7 +22,7 @@
         dest: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
         accept_hostkey: true
         force: true
-        version: "{{ aiidalab_server_docker_stack }}"
+        version: "{{ aiidalab_server_docker_stack_version }}"
         recursive: false
       register: git_get
     - name: Build docker image (takes several minutes the first time)
@@ -31,4 +31,8 @@
         path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
         name: aiidalab-docker-stack:latest
         force: true
+        buildargs:
+          NB_USER: "{{ aiidalab_server_user }}"
+          NB_UID: "{{ aiidalab_server_uid }}"
+          NB_GID: "{{ aiidalab_server_gid }}"
   when: aiidalab_server_build_locally

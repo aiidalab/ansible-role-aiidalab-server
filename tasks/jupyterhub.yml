@@ -54,10 +54,10 @@
   include_role:
     name: os_create_volume
   vars:
-    vol_name: "{{ aiidalab_server_users_home_drive }}"
-    vol_size: "{{ aiidalab_server_users_home_drive_size }}"
+    vol_name: "{{ aiidalab_server_os_home_volume }}"
+    vol_size: "{{ aiidalab_server_os_home_volume_size }}"
     mount_point: /var/jupyterhub/volumes
-  when: aiidalab_server_users_home_drive is defined
+  when: aiidalab_server_os_home_volume is defined
 
 
 - name: (re)start JupyterHub service

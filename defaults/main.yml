@@ -3,20 +3,23 @@ aiidalab_apache_config: apache.conf
 aiidalab_server_config: jupyterhub_config.py
 aiidalab_server_mem_limit: 4G   # memory limit per user
 aiidalab_server_cpu_limit: 2.0  # cpu limit per user
-# replace with static key
+
+# Replace with static key
 aiidalab_server_crypt_key: "{{ lookup('password', '/tmp/crypt_key chars=ascii_letters') }}"
+
 # Whether to create new users on first login, if they do not exist
 aiidalab_server_create_users: "False"  # can be "True" or "False"
 
-# set to true in order to build aiidalab docker image locally
+# Set to true in order to build aiidalab docker image locally
 aiidalab_server_build_locally: false
-# tag of docker stack, see https://hub.docker.com/r/aiidalab/aiidalab-docker-stack
+
+# Tag of docker stack, see https://hub.docker.com/r/aiidalab/aiidalab-docker-stack
 aiidalab_server_docker_stack: latest  # or 'develop'
 
-# replace with domain, e.g. aiidalab.materialscloud.org
+# Replace with domain, e.g. aiidalab.materialscloud.org
 aiidalab_server_name: "aiidalab"
 
-# for oauth server
+# For oauth server
 aiidalab_server_oauth_server: auth.materialscloud.org
 # replace with static key
 aiidalab_server_oauth_client_secret: "{{ lookup('password', '/tmp/client_secret chars=ascii_letters') }}"
@@ -26,3 +29,10 @@ aiidalab_server_oauth_client_secret: "{{ lookup('password', '/tmp/client_secret 
 aiidalab_server_user: "scientist"
 aiidalab_server_uid: 1234
 aiidalab_server_gid: 1234
+
+# Run the daemon that merges package's metadata and git information
+aiidalab_server_metadata_daemon: false
+
+# User's home drive
+# aiidalab_server_os_home_volume: aiidalab-home-volume
+# aiidalab_server_os_home_volume_size: 200

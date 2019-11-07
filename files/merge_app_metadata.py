@@ -1,3 +1,4 @@
+"""This script collects all the registered apps from the aiidalab-registry and adds git-related information to them"""
 from __future__ import print_function
 import codecs
 import json
@@ -107,7 +108,7 @@ if __name__ == "__main__":
 
 
     if not os.path.exists(outdir_abs):
-        os.mkdir(outdir_abs)
+        os.makedirs(outdir_abs, exist_ok=True)
 
     outfile = os.path.join(outdir_abs, apps_meta_file)
     with codecs.open(outfile, 'w', 'utf-8') as f:

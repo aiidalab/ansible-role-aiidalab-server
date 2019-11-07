@@ -6,7 +6,7 @@
   copy:
     src: merge_app_metadata.py
     dest: /var/appsdata/merge_app_metadata.py
-    force: True
+    force: true
 
 - name: Setup cron job to run merge_app_metadata hourly
   cron:

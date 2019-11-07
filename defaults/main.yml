@@ -8,7 +8,7 @@ aiidalab_server_cpu_limit: 2.0  # cpu limit per user
 aiidalab_server_crypt_key: "{{ lookup('password', '/tmp/crypt_key chars=ascii_letters') }}"
 
 # Whether to create new users on first login, if they do not exist
-aiidalab_server_create_users: "False"  # can be "True" or "False"
+aiidalab_server_create_users: false  # can be true or false
 
 # Set to true in order to build aiidalab docker image locally
 aiidalab_server_build_locally: false

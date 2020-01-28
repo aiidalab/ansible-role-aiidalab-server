@@ -20,4 +20,4 @@ galaxy_info:
 
 dependencies:
   - role: geerlingguy.docker
-    tags: dependencies
+    become: true

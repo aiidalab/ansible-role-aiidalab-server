@@ -30,17 +30,19 @@
     version: "{{ item.version }}"
   with_items:
     - name: jupyterhub
-      version: 1.0.0
+      version: 0.9.4
     - name: jupyterhub-firstuseauthenticator
       version: 0.12
     - name: jupyter-client
       version: 5.3.3
     - name: dockerspawner
-      version: 0.11.1
+      version: 0.9.1 # Keep version to 0.9.1 otherwise the spawner will attach incorrect user's folder
     - name: oauthenticator
       version: 0.9.0
     - name: dulwich
       version: 0.19.13
+    - name: requests
+      version: 2.22.0 # To avoid warning messages from merge_app_metadata.py
 
 - name: install recent docker python library
   pip:

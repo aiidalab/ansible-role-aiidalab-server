@@ -36,13 +36,13 @@
     - name: jupyter-client
       version: 5.3.3
     - name: dockerspawner
-      version: 0.9.1 # Keep version to 0.9.1 otherwise the spawner will attach incorrect user's folder
+      version: 0.9.1  # Keep version to 0.9.1 otherwise the spawner will attach incorrect user's folder
     - name: oauthenticator
       version: 0.9.0
     - name: dulwich
       version: 0.19.13
     - name: requests
-      version: 2.22.0 # To avoid warning messages from merge_app_metadata.py
+      version: 2.22.0  # To avoid warning messages from merge_app_metadata.py
 
 - name: install recent docker python library
   pip:

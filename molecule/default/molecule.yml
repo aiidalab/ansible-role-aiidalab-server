@@ -3,10 +3,10 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/default/yamllint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint -x 503
 platforms:
   - name: instance
     image: "${DOCKER_IMAGE:-marvelnccr/ubuntu-docker-base}:${DOCKER_IMAGE_VERSION:-latest}"
@@ -15,19 +15,8 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
-    options:
-      x:
-        - 503
   playbooks:
-    converge: playbook.yml
+    converge: converge.yml
   requirements_file: requirements.yml
   options:
     v: true
-scenario:
-  name: default
-verifier:
-  name: testinfra
-  lint:
-    name: flake8

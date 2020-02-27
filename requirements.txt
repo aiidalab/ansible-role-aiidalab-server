@@ -1,7 +1,7 @@
 # for running
 ansible>=2.7
 # for testing
-molecule
+molecule~=3.0
 docker
-pre-commit
 yamllint
+ansible-lint

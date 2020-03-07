@@ -13,14 +13,12 @@ env:
   matrix:
     - name: Ubuntu-18.04
       env:
-        - DOCKER_IMAGE: marvelnccr/ubuntu-docker-base
-        - DOCKER_IMAGE_VERSION: 2.2
-        - ANSIBLE_USER: ubuntu
+        - DOCKER_IMAGE=marvelnccr/ubuntu-docker-base
+        - DOCKER_IMAGE_VERSION=2.2
     - name: Ubuntu-16.04
       env:
-        - DOCKER_IMAGE: marvelnccr/ubuntu-docker-base
-        - DOCKER_IMAGE_VERSION: 1.1
-        - ANSIBLE_USER: ubuntu
+        - DOCKER_IMAGE=marvelnccr/ubuntu-docker-base
+        - DOCKER_IMAGE_VERSION=1.1
 
 install:
   - pip install -r requirements.txt

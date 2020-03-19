@@ -6,7 +6,8 @@
     - name: pull docker image
       docker_image:
         name: aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }}
-        pull: true
+        source: pull
+        force_source: true
       register: docker_pull
     - name: tag docker image
       command: docker tag aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }} aiidalab-docker-stack:latest

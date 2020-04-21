@@ -69,7 +69,12 @@ def get_git_branches(git_url):
     return branches
 
 if __name__ == "__main__":
-    apps_raw_data = requests.get(registry_url).json()
+    try:
+        requested_content = requests.get(registry_url)
+        apps_raw_data = requested_content.json()
+    except json.decoder.JSONDecodeError:
+        print("Couldn't decode a file with the following content:\n{}".format(requested_content))
+        sys.exit(1)
     categories_raw_data = requests.get(categories_url).json()
 
     all_data = {}

@@ -33,7 +33,7 @@ c.DockerSpawner.extra_host_config.update({
     'cpu_period': 100000,
     'cpu_quota':  {{ (aiidalab_server_cpu_limit * 100000) | int }},
 })
-c.DockerSpawner.volumes = {'/var/jupyterhub/volumes/{username}' : '/project'}
+c.DockerSpawner.volumes = {'/var/jupyterhub/volumes/{username}' : '/home/aiida'}
 c.DockerSpawner.remove_containers = True
 c.JupyterHub.hub_ip = public_ips()[0] # default loopback port doesn't work
 c.Spawner.start_timeout = 180

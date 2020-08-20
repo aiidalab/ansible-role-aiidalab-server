@@ -13,6 +13,9 @@ aiidalab_server_create_users: false  # can be true or false
 # Set to true in order to build aiidalab docker image locally
 aiidalab_server_build_locally: false
 
+# Set to false in order to only download docker image and then manally build it
+do_build_image: true
+
 # Tag of docker stack, see https://hub.docker.com/r/aiidalab/aiidalab-docker-stack
 aiidalab_server_docker_stack: latest  # or 'develop'
 

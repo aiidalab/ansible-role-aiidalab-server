@@ -36,4 +36,5 @@
           NB_USER: "{{ aiidalab_server_user }}"
           NB_UID: "{{ aiidalab_server_uid }}"
           NB_GID: "{{ aiidalab_server_gid }}"
+      when: do_build_image
   when: aiidalab_server_build_locally

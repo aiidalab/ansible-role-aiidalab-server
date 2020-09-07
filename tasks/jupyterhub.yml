@@ -10,7 +10,10 @@
 - name: copy JupyterHub apache config
   template:
     src: "{{ aiidalab_apache_config }}"
-    dest: "/etc/apache2/sites-available/aiidalab-server.conf"
+    dest: /etc/apache2/sites-available/aiidalab-server.conf
+    owner: root
+    group: root
+    mode: 0644
   register: apache_config
 
 - name: enable JupyterHub apache site
@@ -30,15 +33,22 @@
   when: apache_config.changed
 
 - name: copy aiidalab logo
-  copy: src="aiidalab_wide.png" dest="/etc/jupyterhub/"
+  copy:
+    src: aiidalab_wide.png
+    dest: /etc/jupyterhub/
 
 - name: copy JupyterHub config
   template:
     src: "{{ aiidalab_server_config }}"
     dest: /etc/jupyterhub/jupyterhub_config.py
+    owner: root
+    group: root
+    mode: 0644
 
 - name: copy JupyterHub service
-  copy: src="jupyter.service" dest="/etc/systemd/system/jupyterhub.service"
+  copy:
+    src: jupyter.service
+    dest: /etc/systemd/system/jupyterhub.service
 
 - name: create JupyterHub user (adduser)
   user:
@@ -48,7 +58,12 @@
     append: true
 
 - name: create JupyterHub volumes directory
-  file: path="/var/jupyterhub/volumes" state="directory" mode=0755 owner="jupyterhub" group="jupyterhub"
+  file:
+    path: "/var/jupyterhub/volumes"
+    state: directory
+    owner: jupyterhub
+    group: jupyterhub
+    mode: 0755
 
 - name: Create and attach a volume with users home directories
   include_role:

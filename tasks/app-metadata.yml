@@ -1,12 +1,21 @@
 ---
 - name: Make sure that /var/appsdata dir exists
-  file: path=/var/appsdata state=directory
+  file:
+    path: /var/appsdata
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Copy merge_app_metadata.py script
   register: merge_script_updated
   copy:
     src: merge_app_metadata.py
     dest: /var/appsdata/merge_app_metadata.py
     force: true
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Setup cron job to run merge_app_metadata hourly
   cron:

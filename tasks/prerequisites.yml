@@ -29,6 +29,8 @@
     executable: pip3
     version: "{{ item.version }}"
   with_items:
+    - name: pip
+      version: 21.0.1
     - name: jupyterhub
       version: 1.1.0
     - name: jupyterhub-firstuseauthenticator

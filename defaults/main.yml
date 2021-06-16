@@ -30,9 +30,6 @@ aiidalab_server_user: "scientist"
 aiidalab_server_uid: 1234
 aiidalab_server_gid: "{{ aiidalab_server_uid }}"
 
-# Run the daemon that merges package's metadata and git information
-aiidalab_server_metadata_daemon: false
-
 # User's home drive
 # aiidalab_server_os_home_volume: aiidalab-home-volume
 # aiidalab_server_os_home_volume_size: 200

@@ -44,7 +44,7 @@
     - name: dulwich
       version: 0.20.2
     - name: requests
-      version: 2.22.0  # To avoid warning messages from merge_app_metadata.py
+      version: 2.22.0
     - name: python-jwt
       version: 3.3.0
 

@@ -29,6 +29,8 @@
     executable: pip3
     version: "{{ item.version }}"
   with_items:
+    - name: pip
+      version: 21.0.1
     - name: jupyterhub
       version: 1.1.0
     - name: jupyterhub-firstuseauthenticator
@@ -36,13 +38,15 @@
     - name: jupyter-client
       version: 6.1.3
     - name: dockerspawner
-      version: 0.11.1  # Keep version to 0.9.1 otherwise the spawner will attach incorrect user's folder
+      version: 0.11.1
     - name: oauthenticator
-      version: 0.11.0
+      version: 0.12.3
     - name: dulwich
       version: 0.20.2
     - name: requests
       version: 2.22.0  # To avoid warning messages from merge_app_metadata.py
+    - name: python-jwt
+      version: 3.3.0
 
 - name: install recent docker python library
   pip:

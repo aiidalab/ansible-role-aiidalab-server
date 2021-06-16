@@ -47,6 +47,7 @@
     owner: root
     group: root
     mode: 0644
+    backup: true
 
 - name: copy JupyterHub service
   copy:

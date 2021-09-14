@@ -10,8 +10,9 @@ An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.or
 
 ## Role Variables
 
-See `defaults/main.yml`
+See `defaults/main.yml`.
 
+Configure which docker image to use, resource limits, and more.
 ## Example Playbook
 
 ```yaml

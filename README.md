@@ -8,18 +8,11 @@ An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.or
 
 `ansible-galaxy install marvel-nccr.aiidalab_server`
 
-Note: By default, JupyterHub will use the `aiidalab-docker-stack:latest` image.
-Don't forget to tag the image accordingly after pulling the latest version from Dockerhub:
-
-```
-docker pull aiidalab/aiidalab-docker-stack:latest
-docker tag aiidalab/aiidalab-docker-stack:latest aiidalab-docker-stack:latest
-```
-
 ## Role Variables
 
-See `defaults/main.yml`
+See `defaults/main.yml`.
 
+Configure which docker image to use, resource limits, and more.
 ## Example Playbook
 
 ```yaml

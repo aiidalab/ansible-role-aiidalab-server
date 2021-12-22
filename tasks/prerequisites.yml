@@ -2,9 +2,6 @@
 - name: Install JupyterHub apt dependencies
   apt:
     name:
-      - python-pip
-      - python-setuptools
-      - python-wheel
       - python3-pip
       - python3-setuptools
       - python3-wheel
@@ -30,21 +27,21 @@
     version: "{{ item.version }}"
   with_items:
     - name: pip
-      version: 21.0.1
+      version: 21.2.4
     - name: jupyterhub
-      version: 1.1.0
+      version: 1.5.0
     - name: jupyterhub-firstuseauthenticator
       version: 0.14.1
     - name: jupyter-client
-      version: 6.1.3
+      version: 6.1.12
     - name: dockerspawner
       version: 0.11.1
     - name: oauthenticator
-      version: 0.12.3
+      version: 0.13.0
     - name: dulwich
-      version: 0.20.2
+      version: 0.20.25
     - name: requests
-      version: 2.22.0
+      version: 2.26.0
     - name: python-jwt
       version: 3.3.0
 

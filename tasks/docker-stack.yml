@@ -3,27 +3,27 @@
 - name: Pull the docker image from the DockerHub.
   become: true
   block:
-    - name: Pull the docker image {{ aiidalab_image_name }}:{{ aiidalab_image_version }}.
+    - name: Pull the docker image {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }}.
       docker_image:
-        name: "{{ aiidalab_image_name }}:{{ aiidalab_image_version }}"
+        name: "{{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }}"
         source: pull
         force_source: true
       register: docker_pull
     - name: Tag the docker image as 'aiidalab-docker-stack:latest'.
-      command: docker tag {{ aiidalab_image_name }}:{{ aiidalab_image_version }} aiidalab-docker-stack:latest
+      command: docker tag {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }} aiidalab-docker-stack:latest
       changed_when: false
   when: not aiidalab_server_build_locally
 
 - name: Build the docker image locally.
   tags: aiidalab_server_build_image
   block:
-    - name: Clone {{ aiidalab_image_git_repository }} repository. 
+    - name: Clone {{ aiidalab_server_image_git_repository }} repository. 
       git:
-        repo: "{{ aiidalab_image_git_repository }}"
+        repo: "{{ aiidalab_server_image_git_repository }}"
         dest: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
         accept_hostkey: true
         force: true
-        version: "{{ aiidalab_image_version }}"
+        version: "{{ aiidalab_server_image_version }}"
         recursive: false
       register: git_get
     - name: Build the docker image tagged as 'aiidalab-docker-stack:latest'. This might take several minutes.

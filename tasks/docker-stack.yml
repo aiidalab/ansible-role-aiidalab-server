@@ -1,39 +1,42 @@
 ---
 # jupyterhub always runs image tagged as "aiidalab-docker-stack:latest"
-- name: pull docker image from dockerhub
+- name: Pull the docker image from the DockerHub.
   become: true
   block:
-    - name: pull docker image
+    - name: Pull the docker image {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }}.
       docker_image:
-        name: aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }}
+        name: "{{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }}"
         source: pull
         force_source: true
       register: docker_pull
-    - name: tag docker image
-      command: docker tag aiidalab/aiidalab-docker-stack:{{ aiidalab_server_docker_stack }} aiidalab-docker-stack:latest
+    - name: Tag the docker image as 'aiidalab-docker-stack:latest'.
+      command: docker tag {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }} aiidalab-docker-stack:latest
       changed_when: false
   when: not aiidalab_server_build_locally
 
-- name: Build docker image locally
+- name: Build the docker image locally.
   tags: aiidalab_server_build_image
   block:
-    - name: clone aiidalab-docker-stack repo
+    - name: Clone {{ aiidalab_server_image_git_repository }} repository and check out tag {{ aiidalab_server_image_version }}. 
       git:
-        repo: https://github.com/aiidalab/aiidalab-docker-stack.git
+        repo: "{{ aiidalab_server_image_git_repository }}"
         dest: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
         accept_hostkey: true
         force: true
-        version: "{{ aiidalab_server_docker_stack }}"
+        version: "{{ aiidalab_server_image_version }}"
         recursive: false
       register: git_get
-    - name: Build docker image (takes several minutes the first time)
+    - name: Build the docker image and tag it as 'aiidalab-docker-stack:latest'. This might take several minutes.
       become: true
       docker_image:
-        path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
-        name: aiidalab-docker-stack:latest
-        force: true
-        buildargs:
-          NB_USER: "{{ aiidalab_server_user }}"
-          NB_UID: "{{ aiidalab_server_uid }}"
-          NB_GID: "{{ aiidalab_server_gid }}"
+        name: aiidalab-docker-stack
+        tag: latest
+        force_source: true
+        source: build
+        build:
+          path: "{{ ansible_env.HOME }}/aiidalab-docker-stack"
+          args:
+            NB_USER: "{{ aiidalab_server_user }}"
+            NB_UID: "{{ aiidalab_server_uid }}"
+            NB_GID: "{{ aiidalab_server_gid }}"
   when: aiidalab_server_build_locally

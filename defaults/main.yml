@@ -10,11 +10,11 @@ aiidalab_server_crypt_key: "{{ lookup('password', '/tmp/crypt_key chars=ascii_le
 # Whether to create new users on first login, if they do not exist
 aiidalab_server_create_users: false  # can be true or false
 
-# Set to true in order to build aiidalab docker image locally
-aiidalab_server_build_locally: false
-
-# Tag of docker stack, see https://hub.docker.com/r/aiidalab/aiidalab-docker-stack
-aiidalab_server_docker_stack: latest  # or 'develop'
+# Manage AiiDAlab Docker image.
+aiidalab_server_build_locally: false # Set 'true' to download the Git repository and build the image locally. Set 'false' to pull the image from DockerHub.
+aiidalab_image_name: aiidalab/aiidalab-docker-stack # Used when pulling the image from DockerHub.
+aiidalab_image_git_repository: https://github.com/aiidalab/aiidalab-docker-stack.git # Used when pulling the image from the Git repository.
+aiidalab_image_version: latest # or 'develop', or '21.12.0'.
 
 # Replace with domain, e.g. aiidalab.materialscloud.org
 aiidalab_server_name: "aiidalab"

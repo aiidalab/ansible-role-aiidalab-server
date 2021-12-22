@@ -14,7 +14,7 @@ aiidalab_server_create_users: false  # can be true or false
 aiidalab_server_build_locally: false # Use `true` to download the Git repository and build the image locally. Use `false` to pull the image from DockerHub.
 aiidalab_server_image_name: aiidalab/aiidalab-docker-stack # Used when pulling the image from DockerHub.
 aiidalab_server_image_git_repository: https://github.com/aiidalab/aiidalab-docker-stack.git # Used when building the image locally from the Git repository.
-aiidalab_server_image_version: latest # or 'develop', or '21.12.0'.
+aiidalab_server_image_version: latest # tag of docker image or git repository (e.g. 'latest', 'develop', '21.12.0', ...)
 
 # Replace with domain, e.g. aiidalab.materialscloud.org
 aiidalab_server_name: "aiidalab"

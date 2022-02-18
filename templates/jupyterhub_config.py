@@ -11,7 +11,7 @@ c.JupyterHub.logo_file          = "/etc/jupyterhub/aiidalab_wide.png"
 c.JupyterHub.cookie_secret_file = "/var/jupyterhub/jupyterhub_cookie_secret"
 c.JupyterHub.db_url             = "/var/jupyterhub/jupyterhub.sqlite"
 c.JupyterHub.extra_log_file     = "/var/jupyterhub/jupyterhub.log"
-
+c.JupyterHub.template_paths     = ["/etc/jupyterhub/templates", ]
 # apparently this does not yet work properly with DockerSpawner
 c.JupyterHub.cleanup_proxy      = False
 c.JupyterHub.cleanup_servers    = False

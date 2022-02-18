@@ -1,0 +1,25 @@
+{% extends "page.html" %}
+{% if announcement_login %}
+  {% set announcement = announcement_login %}
+{% endif %}
+{% block login_widget %}
+{% endblock %}
+{% block main %}
+{% block login %}
+<div id="login-main" class="container">
+<div class="service-login">
+<h1>Hi 👋</h1>
+ <h3>
+ <p>
+  It seems that you are not yet authorised to use the AiiDAlab service.
+  </p>
+  <p>
+  Please drop us a line at
+  <a href="mailto:aiidalab@materialscloud.org">aiidalab@materialscloud.org</a>
+  to request access.
+ </p>
+ </h3>
+</div>
+</div>
+{% endblock login %}
+{% endblock %}

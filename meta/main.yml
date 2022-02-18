@@ -3,6 +3,7 @@ allow_duplicates: false
 
 galaxy_info:
   role_name: aiidalab_server
+  namespace: marvel_nccr
   author: "MARVEL NCCR"
   # yamllint disable-line rule:line-length
   description: "An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu."

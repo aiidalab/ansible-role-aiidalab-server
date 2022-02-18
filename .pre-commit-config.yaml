@@ -1,12 +1,6 @@
 ---
-# For use with pre-commit.
-# See usage instructions at https://pre-commit.com
-repos:
-- repo: local
+- repo: https://github.com/adrienverge/yamllint.git
+  rev: v1.17.0
   hooks:
-  - id: yamllint
-    name: yamllint
-    description: This hook runs yamllint.
-    entry: yamllint
-    language: system
-    types: [file, yaml]
+    - id: yamllint
+      args: [-c=.yamllint]

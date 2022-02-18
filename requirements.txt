@@ -5,3 +5,4 @@ molecule~=3.0
 docker
 yamllint
 ansible-lint
+molecule-docker

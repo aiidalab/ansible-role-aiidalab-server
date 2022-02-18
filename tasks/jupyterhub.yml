@@ -49,10 +49,18 @@
     mode: 0644
     backup: true
 
-- name: copy JupyterHub service
+- name: Create templates directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/jupyterhub/templates
+    state: directory
+    owner: root
+    group: root
+    mode: '755'
+
+- name: copy JupyterHub 403.html
   copy:
-    src: jupyter.service
-    dest: /etc/systemd/system/jupyterhub.service
+    src: 403.html
+    dest: /etc/jupyterhub/templates/403.html
     owner: root
     group: root
     mode: 0644

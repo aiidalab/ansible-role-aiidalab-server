@@ -1,0 +1,25 @@
+---
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test-role:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Launch molecule testing.
+        run: molecule test

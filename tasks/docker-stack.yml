@@ -17,7 +17,7 @@
 - name: Build the docker image locally.
   tags: aiidalab_server_build_image
   block:
-    - name: Clone {{ aiidalab_server_image_git_repository }} repository and check out tag {{ aiidalab_server_image_version }}. 
+    - name: Clone {{ aiidalab_server_image_git_repository }} repository and check out tag {{ aiidalab_server_image_version }}.
       git:
         repo: "{{ aiidalab_server_image_git_repository }}"
         dest: "{{ ansible_env.HOME }}/aiidalab-docker-stack"

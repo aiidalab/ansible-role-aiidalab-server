@@ -57,6 +57,14 @@
     group: root
     mode: '755'
 
+- name: copy JupyterHub service
+  copy:
+    src: jupyter.service
+    dest: /etc/systemd/system/jupyterhub.service
+    owner: root
+    group: root
+    mode: 0644
+
 - name: copy JupyterHub 403.html
   copy:
     src: 403.html

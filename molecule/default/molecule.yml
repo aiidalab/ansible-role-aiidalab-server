@@ -1,6 +1,7 @@
 ---
 dependency:
   name: galaxy
+  requirements_file: molecule/default/requirements.yml
 driver:
   name: docker
 lint: |
@@ -17,6 +18,10 @@ provisioner:
   name: ansible
   playbooks:
     converge: converge.yml
-  requirements_file: requirements.yml
-  options:
-    v: true
+  config_options:
+    defaults:
+      # nicer stdout printing
+      stdout_callback: yaml
+      bin_ansible_callbacks: true
+      # add timing to tasks
+      callback_whitelist: profile_tasks

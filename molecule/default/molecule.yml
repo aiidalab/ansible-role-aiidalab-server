@@ -4,10 +4,6 @@ dependency:
   requirements_file: molecule/default/requirements.yml
 driver:
   name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint -x 503
 platforms:
   - name: instance
     image: "${DOCKER_IMAGE:-marvelnccr/ubuntu-docker-base}:${DOCKER_IMAGE_VERSION:-latest}"

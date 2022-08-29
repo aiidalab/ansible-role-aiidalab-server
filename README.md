@@ -1,12 +1,10 @@
-[![Build Status](https://travis-ci.org/marvel-nccr/ansible-role-aiidalab-server.svg?branch=master)](https://travis-ci.org/marvel-nccr/ansible-role-aiidalab-server)
-
-# Ansible Role: marvel-nccr.aiidalab_server
+# Ansible Role: aiidalab.aiidalab_server
 
 An Ansible role that deploys a multi-user [AiiDAlab](aiidalab.materialscloud.org) server on Ubuntu.
 
 ## Installation
 
-`ansible-galaxy install marvel-nccr.aiidalab_server`
+`ansible-galaxy install git+https://github.com/aiidalab/ansible-role-aiidalab-server.git,v0.4.0`
 
 ## Role Variables
 
@@ -18,7 +16,7 @@ Configure which docker image to use, resource limits, and more.
 ```yaml
 - hosts: servers
   roles:
-  - role: marvel-nccr.aiidalab_server
+  - role: aiidalab.aiidalab_server
 ```
 
 ## Tests

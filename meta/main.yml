@@ -3,10 +3,10 @@ allow_duplicates: false
 
 galaxy_info:
   role_name: aiidalab_server
-  namespace: marvel_nccr
-  author: "MARVEL NCCR"
+  namespace: aiidalab
+  author: "AiiDAlab team"
   # yamllint disable-line rule:line-length
-  description: "An Ansible role that deploys a multi-user [AiiDA lab](aiidalab.materialscloud.org) server on Ubuntu."
+  description: "An Ansible role that deploys a multi-user [AiiDAlab](aiidalab.materialscloud.org) server on Ubuntu."
   license: MIT
   min_ansible_version: 2.7
   platforms:
@@ -14,6 +14,8 @@ galaxy_info:
       versions:
         - xenial
         - bionic
+        - focal
+        - jammy
   galaxy_tags:
     - ubuntu
     - application

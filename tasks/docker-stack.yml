@@ -1,5 +1,5 @@
 ---
-# jupyterhub always runs image tagged as "aiidalab-docker-stack:latest"
+# jupyterhub always runs image tagged as "aiidalab-image:latest"
 - name: Pull the docker image from the DockerHub.
   become: true
   block:
@@ -9,8 +9,8 @@
         source: pull
         force_source: true
       register: docker_pull
-    - name: Tag the docker image as 'aiidalab-docker-stack:latest'.
-      command: docker tag {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }} aiidalab-docker-stack:latest
+    - name: Tag the docker image as 'aiidalab-image:latest'.
+      command: docker tag {{ aiidalab_server_image_name }}:{{ aiidalab_server_image_version }} aiidalab-image:latest
       changed_when: false
   when: not aiidalab_server_build_locally
 
@@ -26,10 +26,10 @@
         version: "{{ aiidalab_server_image_version }}"
         recursive: false
       register: git_get
-    - name: Build the docker image and tag it as 'aiidalab-docker-stack:latest'. This might take several minutes.
+    - name: Build the docker image and tag it as 'aiidalab-image:latest'. This might take several minutes.
       become: true
       docker_image:
-        name: aiidalab-docker-stack
+        name: aiidalab-image
         tag: latest
         force_source: true
         source: build

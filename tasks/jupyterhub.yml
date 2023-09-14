@@ -34,7 +34,7 @@
 
 - name: copy aiidalab logo
   copy:
-    src: aiidalab_wide.png
+    src: "{{ aiidalab_apache_config }}"
     dest: /etc/jupyterhub/
     owner: root
     group: root

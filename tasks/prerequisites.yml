@@ -27,22 +27,18 @@
     version: "{{ item.version }}"
   with_items:
     - name: pip
-      version: 21.2.4
-    - name: jupyterhub
-      version: 1.5.0
-    - name: jupyterhub-firstuseauthenticator
-      version: 0.14.1
-    - name: jupyter-client
+      version: 23.0.0
+    - name: jupyterhub  # 1.5.0 fails with SQLAlchemy 2.x
+      version: 1.5.1
+    - name: jupyterhub-firstuseauthenticator  # A JupyterHub authenticator that helps new users set their password on their first login to JupyterHub.
+      version: 1.0.0
+    - name: jupyter-client  # This is used in the aiidalab_config.py file.
       version: 6.1.12
-    - name: dockerspawner
+    - name: dockerspawner  # To be updated.
       version: 0.11.1
     - name: oauthenticator
       version: 0.13.0
-    - name: dulwich
-      version: 0.20.25
-    - name: requests
-      version: 2.26.0
-    - name: python-jwt
+    - name: python-jwt  # Why is this needed?
       version: 3.3.0
 
 - name: install recent docker python library
